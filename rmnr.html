@@ -1,0 +1,33 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>改行を空白に</title>
+
+<h1>改行を空白に</h1>
+
+<h2>入力</h2>
+<form id="fmin">
+  <ul>
+  <li><textarea id="txtin"></textarea></li>
+  <li><input type="button" id="rmnr" value="改行を空白に"/></li>
+  </ul>
+</form>
+
+<h2>出力</h2>
+<textarea id="txtout"></textarea>
+
+<style>textarea{width:50em;height:3em;}</style>
+
+<script>
+var rmnr = function(){
+  var txtin = document.getElementById("txtin");
+  var txtout = document.getElementById("txtout");
+  txtout.value = txtin.value.replace(/[\n\r]/gm," ");
+};
+
+var init = function(){  
+  document.getElementById("rmnr").onclick = rmnr;
+  document.getElementById("txtin").onkeydown = function(){if(event.keyCode==13&&event.shiftKey){rmnr();};};
+};
+
+window.onload = init;
+</script>
